@@ -10,3 +10,4 @@ qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-$VM_ID-disk-0,ssd=1
 qm set $VM_ID --ide2 local-lvm:cloudinit
 qm set $VM_ID --boot c --bootdisk scsi0
 qm set $VM_ID --serial0 socket --vga serial0
+qm set $VM_ID --ciuser user --cipassword user --sshkeys
