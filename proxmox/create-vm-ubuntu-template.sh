@@ -4,7 +4,7 @@ if ! test -f $IMG_PATH$IMG_NAME; then
   wget https://cloud-images.ubuntu.com/releases/24.04/release/$IMG_NAME -P $IMG_PATH
 fi
 VM_ID=10000
-qm create $VM_ID --memory 4096 --core 4 --name ubuntu-cloud --net0 virtio,bridge=vmbr0 --template
+qm create $VM_ID --memory 4096 --core 2 --socket 2 --cpu cputype=host --numa 1 --name ubuntu-cloud --net0 virtio,bridge=vmbr0 --template
 qm importdisk $VM_ID $IMG_PATH$IMG_NAME local-lvm
 qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-1000-disk-0
 qm set $VM_ID --ide2 local-lvm:cloudinit
