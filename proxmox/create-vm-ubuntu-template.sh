@@ -6,7 +6,7 @@ fi
 VM_ID=10000
 qm create $VM_ID --memory 4096 --balloon 0 --core 2 --socket 2 --cpu cputype=host --numa 1 --name ubuntu-cloud --net0 virtio,bridge=vmbr0 --template
 qm importdisk $VM_ID $IMG_PATH$IMG_NAME local-lvm
-qm set $VM_ID --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-$VM_ID-disk-0
-qm set $VM_ID --ide2,ssd=1 local-lvm:cloudinit
+qm set $VM_ID --scsihw virtio-scsi-pci --scsi0,ssd=1 local-lvm:vm-$VM_ID-disk-0
+qm set $VM_ID --ide2 local-lvm:cloudinit
 qm set $VM_ID --boot c --bootdisk scsi0
 qm set $VM_ID --serial0 socket --vga serial0
