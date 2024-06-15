@@ -4,5 +4,5 @@ arr_vm_host=("master1" "master2" "master3" "node1" "node2" "node3")
 for key in "${!arr_vm_id[@]}"
 do
   qm clone 10000 "${arr_vm_id[$key]}" --name "${arr_vm_host[$key]}" --full
-  qm set "${arr_vm_id[$key]}" --ipconfig0 gw=192.168.1.1, ip="${arr_vm_ip[$key]}"/24 --scsi0 size=30
+  qm set "${arr_vm_id[$key]}" --ipconfig0 gw=192.168.1.1, ip="${arr_vm_ip[$key]}"/24
 done
