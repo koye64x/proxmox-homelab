@@ -5,4 +5,5 @@ for key in "${!arr_vm_id[@]}"
 do
   qm clone 10000 "${arr_vm_id[$key]}" --name "${arr_vm_host[$key]}" --full
   qm set "${arr_vm_id[$key]}" --ipconfig0 gw=192.168.1.1, ip="${arr_vm_ip[$key]}"/24
+  qm resize "${arr_vm_id[$key]}" scsi0 30G
 done
